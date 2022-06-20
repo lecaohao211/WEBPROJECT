@@ -25,7 +25,7 @@ class Chef
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $gender;
 
@@ -35,7 +35,7 @@ class Chef
     private $salary;
 
     /**
-     * @ORM\OneToMany(targetEntity=Food::class, mappedBy="chef")
+     * @ORM\OneToMany(targetEntity=Food::class, mappedBy="chefID")
      */
     private $type;
 
@@ -97,7 +97,7 @@ class Chef
     {
         if (!$this->type->contains($type)) {
             $this->type[] = $type;
-            $type->setChef($this);
+            $type->setChefID($this);
         }
 
         return $this;
@@ -107,8 +107,8 @@ class Chef
     {
         if ($this->type->removeElement($type)) {
             // set the owning side to null (unless already changed)
-            if ($type->getChef() === $this) {
-                $type->setChef(null);
+            if ($type->getChefID() === $this) {
+                $type->setChefID(null);
             }
         }
 

@@ -35,7 +35,7 @@ class Food
     /**
      * @ORM\ManyToOne(targetEntity=chef::class, inversedBy="type")
      */
-    private $chef;
+    private $chefID;
 
     public function getId(): ?int
     {
@@ -78,15 +78,17 @@ class Food
         return $this;
     }
 
-    public function getChef(): ?chef
+    public function getChefID(): ?chef
     {
-        return $this->chef;
+        return $this->chefID;
     }
 
-    public function setChef(?chef $chef): self
+    public function setChefID(?chef $chefID): self
     {
-        $this->chef = $chef;
+        $this->chefID = $chefID;
 
         return $this;
     }
+
+
 }
